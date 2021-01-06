@@ -1,0 +1,439 @@
+@font-face {
+   font-family: "Be Vietnam";
+   src: url("./fonts/BeVietnam-Bold.woff") format("woff");
+   font-style: normal;
+   font-weight: 700;
+}
+
+@font-face {
+   font-family: "Be Vietnam";
+   src: url("./fonts/BeVietnam-Medium.woff") format("woff");
+   font-style: normal;
+   font-weight: 500;
+}
+
+@font-face {
+   font-family: "Be Vietnam";
+   src: url("./fonts/BeVietnam-Regular.woff") format("woff");
+   font-style: normal;
+   font-weight: 400;
+}
+
+:root {
+   --Bright--Red: hsl(12, 88%, 59%);
+   --Dark--Blue: hsl(228, 39%, 23%);
+
+   --Dark-Grayish-Blue: hsl(227, 12%, 61%);
+   --Very-Dark-Blue: hsl(233, 12%, 13%);
+   --Very--Pale-Red: hsl(13, 100%, 96%);
+   --Very--Light-Gray: hsl(0, 0%, 98%);
+
+   --debugger: 1px solid red;
+   --pry-padding: 2em;
+}
+
+
+/* reset styles */
+*,
+*::before,
+*::after {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+}
+
+
+/* general styles */
+body {
+   font-family: "Be Vietnam", sans-serif;
+   line-height: 1.4;
+}
+
+a {
+   display: inline-block;
+   text-decoration: none;
+   text-transform: capitalize;
+   font-weight: 700;
+   padding: 0.2em;
+}
+
+img {
+   max-width: 100%;
+}
+
+h1, h2, h3, h4 {
+   margin-bottom: 1rem;
+   font-weight: 700;
+   color: var(--Dark--Blue);
+}
+
+p {
+   margin-bottom: 1rem;
+   color: var(--Dark-Grayish-Blue);
+}
+
+ul {
+   list-style: none;
+}
+
+.get-started {
+   padding: 0.5em 2em;
+   border-radius: 20px;
+   color: var(--Very--Pale-Red);
+   background-color: var(--Bright--Red);
+   box-shadow: 0 7px 10px 0  hsl(12, 88%, 59%, .5);
+}
+
+
+/* head styles */
+.banner {
+   background-image: url("./images/bg-tablet-pattern.svg");
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-position: 100% -20%;
+   padding: 2em;
+   height: 100vh;
+}
+
+.banner > .comp-logo {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   padding-bottom: 2em;
+   position: relative;
+   /* outline: var(--debugger); */
+}
+
+.banner #toggler {
+   width: 34px;
+   height: 20px;
+   position: absolute;
+   top: -2px;
+   right: -4px;
+   cursor: pointer;
+   z-index: 1;
+   opacity: 0;
+}
+
+.banner .hamburger {
+   width: 30px;
+   height: 30px;
+   position: absolute;
+   top: 0;
+   right: 0;
+   display: grid;
+   place-items: center;
+   /* background-color: #fff; */
+}
+
+.banner .hamburger>div {
+   width: 100%;
+   height: 3px;
+   background-color: #000;
+   transition: transform 450ms ease;
+}
+
+.banner .hamburger::before,
+.banner .hamburger::after {
+   content: "";
+   position: absolute;
+   top: 0px;
+   width: 100%;
+   height: 3px;
+   background-color: #000;
+   transition: transform 400ms ease;
+}
+
+.banner .hamburger::after {
+   top: 7px;
+}
+
+.banner #toggler:checked + .hamburger > div {
+   transform: scale(0);
+}
+
+.banner #toggler:checked + .hamburger::before {
+   transform: rotate(40deg) translate(6px);
+}
+
+.banner #toggler:checked + .hamburger::after {
+    transform: rotate(-40deg) translate(5px);
+}
+
+.banner .primary-links {
+   position: absolute;
+   width: 100vw;
+   height: 0;
+   margin: -2em;
+   overflow-y: hidden;
+   display: grid;
+   place-items: center;
+   background-color: rgba(0, 0, 0, .3);
+}
+
+.banner #toggler:checked ~ .primary-links {
+   height: 100vh;
+}
+
+.banner #toggler:checked ~ .primary-links > ul{
+   height: 250px;
+}
+
+.banner .primary-links > ul {
+   position: absolute;
+   top: 10%;
+   width: 80%;
+   height: 0;
+   padding: 2em;
+   display: grid;
+   align-items: center;
+   justify-items: center;
+   gap: 10px;
+   transition: height 300ms ease;
+   border-radius: 3px;
+   background-color: #fff;
+}
+
+.banner .primary-links a {
+   color: var(--Very-Dark-Blue)
+}
+
+.banner > .banner-text {
+   text-align: center;
+}
+
+.banner > .banner-text h1 {
+   color: var(--Dark--Blue);
+}
+
+.banner > .banner-text p {
+   margin-bottom: 2rem;
+}
+
+
+
+/* main styles */
+main {
+   padding: var(--pry-padding);
+   padding-bottom: 0;
+   text-align: center;
+   margin-top: 1rem;
+}
+
+main > .title {
+   margin-bottom: 3rem;
+}
+
+main > .features > div {
+   margin-bottom: 3rem;
+   position: relative;
+}
+
+main > .features > div::before {
+   content: "01";
+   position: absolute;
+   top: 0;
+   left: -5px;
+   width: 50px;
+   height: 10px;
+   transform: translateY(25%);
+   color: #fff;
+   z-index: 2;
+   font-weight: 500;
+}
+
+main > .features > div:nth-child(2)::before {
+   content: "02";
+}
+
+main > .features > div:nth-child(3)::before {
+   content: "03";
+}
+
+main > .features h4 {
+   background-color: var(--Very--Pale-Red);
+   padding: 0.5em 0.5em 0.5em 2em;
+   margin-right: -2rem;
+   position: relative;
+   font-size: 0.8rem;
+}
+
+main > .features h4::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: -5px;
+   width: 50px;
+   height: 100%;
+   color: #fff;
+   display: grid;
+   place-items: center;
+   background-color: var(--Bright--Red);
+   border-radius: 20px;
+}
+
+main > .features p {
+   text-align: left;
+}
+
+main > .testimonial {
+   margin-bottom: 4rem;
+   position: relative;
+}
+
+main > .testimonial > .slider-wrapper {
+   position: relative;
+   height: 300px;
+   width: 100%;
+   margin-bottom: 1rem;
+   overflow: hidden;
+}
+
+main > .testimonial .slider {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 100%;
+   height: 300px;
+   transform: translateX(-100%);
+   padding: 1em;
+   background-color: var(--Very--Light-Gray);
+   margin: 4rem 0;
+}
+
+main > .testimonial .active {
+   display: block;
+   transform: translateX(0);
+   transition: all 1000ms ease;
+}
+
+main > .testimonial .slider > h4 {
+   text-transform: capitalize;
+   margin-top: 2rem;
+}
+
+main > .testimonial .slider > img {
+   width: 80px;
+   position: absolute;
+   top: 0;
+   transform: translate(-50%, -50%);
+}
+
+main > .testimonial .controller {
+   display: flex;
+   justify-content: center;
+   text-align: center;
+   margin-bottom: 3rem;
+}
+
+main > .testimonial span {
+   width: 10px;
+   height: 10px;
+   border: 1px solid var(--Bright--Red);
+   border-radius: 50%;
+   margin-right: 10px;
+}
+
+
+@supports (display: grid) {
+   main > .testimonial .controller {
+      display: grid;
+      grid-template-columns: repeat(4, 10px);
+      justify-content: center;
+      column-gap: 3px;
+      margin-bottom: 3rem;
+   }
+
+   main > .testimonial span {
+      width: 10px;
+      height: 10px;
+      border: 1px solid var(--Bright--Red);
+      border-radius: 50%;
+   }
+}
+
+main > .testimonial span:hover,
+main > .testimonial span:focus {
+   background-color: var(--Bright--Red);
+}
+
+main > .call-to-action {
+   background-color: var(--Bright--Red);
+   padding: 6em 4em;
+   margin: 0 -2rem;
+}
+
+main > .call-to-action > h3 {
+   color: var(--Very--Light-Gray);
+}
+
+main > .call-to-action > .get-started {
+   background-color: var(--Very--Light-Gray);
+   color: var(--Bright--Red);
+}
+
+
+/* footer styles */
+footer {
+   background-color: var(--Very-Dark-Blue);
+   padding: 0.1em var(--pry-padding);
+}
+
+footer > .news-letter {
+   margin: 3rem 0;
+   display: grid;
+   grid-template-columns: 1fr 60px;
+   justify-content: center;
+   gap: 10px;
+}
+
+footer > .news-letter > input,
+footer > .news-letter > button {
+   padding: 0.6em 1.5em;
+   border: none;
+   border-radius: 20px;
+   font-family: inherit;
+   font-size: 0.73rem;
+   color: var(--Dark-Grayish-Blue);
+   font-weight: 500;
+}
+
+footer > .news-letter > button {
+   background-color: var(--Bright--Red);
+   color: #fff;
+}
+
+footer > .secondary-links > ul {
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   justify-items: center;
+   margin-bottom: 2rem;
+}
+
+footer > .secondary-links li {
+   margin-bottom: 1rem;
+}
+
+footer > .secondary-links a {
+   color: var(--Very--Pale-Red);
+   font-weight: 400;
+}
+
+footer > .social-links {
+   display: grid;
+   grid-template-columns: repeat(5, 1fr);
+   justify-items: center;
+   margin-bottom: 2rem;
+}
+
+footer > .logo {
+   text-align: center;
+   margin-bottom: 2rem;
+}
+
+footer > p {
+   text-align: center;
+}
+
+
+/* footer styles */
+
